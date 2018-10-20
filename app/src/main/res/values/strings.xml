@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FacebookRecipesExample</string>
+    <!--<string name="facebook_app_id">506383273162047</string>-->
+    <string name="fb_login_protocol_scheme">fb1116752645146552</string>
+
+    <string name="login.cancel.error">Inicio de sesión cancelado</string>
+    <string name="login.error">Imposible iniciar sesión</string>
+
+    <string name="recipemain.error">Imposible obtener la información</string>
+    <string name="recipemain.notice.saved">Guardado exitosamente</string>
+</resources>

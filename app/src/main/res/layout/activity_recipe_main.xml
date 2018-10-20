@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/padding_rl"
+    android:paddingRight="@dimen/padding_rl"
+    android:paddingTop="@dimen/padding_rl"
+    android:paddingBottom="@dimen/padding_rl"
+    android:id="@+id/rlContentRecipe"
+    tools:context=".recipemain.ui.RecipeMainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recipes_main_image_height"
+        android:id="@+id/ivPhotos"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:id="@+id/llSubContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ivPhotos">
+
+        <ImageButton
+            android:layout_width="@dimen/recipe_main_icon"
+            android:layout_height="@dimen/recipe_main_icon"
+            android:id="@+id/ibFavorite"
+            android:layout_margin="@dimen/padding_rl"
+            android:src="@android:drawable/btn_star"
+            android:background="@color/colorAccent"
+            android:tint="@android:color/white"/>
+
+        <ImageButton
+            android:layout_width="@dimen/recipe_main_icon"
+            android:layout_height="@dimen/recipe_main_icon"
+            android:id="@+id/ibDelete"
+            android:layout_margin="@dimen/padding_rl"
+            android:src="@android:drawable/ic_delete"
+            android:background="@color/colorPrimaryDark"
+            android:tint="@android:color/white"/>
+
+
+
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pbRecipe"
+        android:layout_gravity="center_vertical"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>
