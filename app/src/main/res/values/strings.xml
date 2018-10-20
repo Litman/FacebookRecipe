@@ -8,4 +8,7 @@
 
     <string name="recipemain.error">Imposible obtener la información</string>
     <string name="recipemain.notice.saved">Guardado exitosamente</string>
+
+    <string name="recipe.menu.action.list">Recetas guardadas</string>
+    <string name="global.menu.action.logout">Cerrar Sesion</string>
 </resources>

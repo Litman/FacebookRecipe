@@ -3,6 +3,8 @@ package ghostl.com.facebookrecipesexample.recipemain.ui;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -114,5 +116,15 @@ public class RecipeMainActivity extends AppCompatActivity implements RecipeMainV
         if(currentRecipe != null){
             recipeMainPresenter.dismissRecipe();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }
