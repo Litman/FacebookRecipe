@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ghostl.com.facebookrecipesexample">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".FacebookRecipesApp"
@@ -34,7 +34,8 @@
             android:authorities="@string/FACEBOOK_PROVIDER_AUTH"
             android:exported="true" />
 
-        <!--<activity
+        <!--
+        <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
@@ -45,8 +46,10 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity>-->
-        <activity android:name=".recipemain.ui.RecipeMainActivity"></activity>
+        </activity>
+        -->
+        <activity android:name=".recipemain.ui.RecipeMainActivity" />
+        <activity android:name=".RecipeListActivity"></activity>
     </application>
 
 </manifest>
