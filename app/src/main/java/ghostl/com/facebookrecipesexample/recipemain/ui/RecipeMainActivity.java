@@ -62,7 +62,7 @@ public class RecipeMainActivity extends AppCompatActivity implements RecipeMainV
     }
 
     private void setupGestureDetection() {
-        
+
     }
 
     private void setupImageLoader() {
