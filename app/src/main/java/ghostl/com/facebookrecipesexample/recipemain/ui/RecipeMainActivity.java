@@ -5,9 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -30,7 +34,7 @@ import ghostl.com.facebookrecipesexample.recipemain.RecipeMainPresenter;
 import ghostl.com.facebookrecipesexample.recipemain.di.RecipeMainComponent;
 import ghostl.com.facebookrecipesexample.recipemain.events.RecipeMainEvent;
 
-public class RecipeMainActivity extends AppCompatActivity implements RecipeMainView{
+public class RecipeMainActivity extends AppCompatActivity implements RecipeMainView, SwipeGestureListener {
 
     @Bind(R.id.ivPhotos)
     ImageView ivPhotos;
@@ -62,7 +66,14 @@ public class RecipeMainActivity extends AppCompatActivity implements RecipeMainV
     }
 
     private void setupGestureDetection() {
-        
+        final GestureDetector gestureDetector = new GestureDetector(this, new SwipeGestureDetector(this));
+        View.OnTouchListener gestureOnTouchListener = new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return gestureDetector.onTouchEvent(motionEvent);
+            }
+        };
+        ivPhotos.setOnTouchListener(gestureOnTouchListener);
     }
 
     private void setupImageLoader() {
@@ -127,12 +138,39 @@ public class RecipeMainActivity extends AppCompatActivity implements RecipeMainV
 
     @Override
     public void saveAnimation() {
-
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.save_animation);
+        anim.setAnimationListener(getAnimationListener());
+        ivPhotos.startAnimation(anim);
     }
 
     @Override
     public void dismissAnimation() {
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.dismiss_animation);
+        anim.setAnimationListener(getAnimationListener());
+        ivPhotos.startAnimation(anim);
+    }
 
+    private void clearImage(){
+        ivPhotos.setImageResource(0);
+    }
+
+    private Animation.AnimationListener getAnimationListener(){
+        return new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                clearImage();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        };
     }
 
     @Override
@@ -153,12 +191,16 @@ public class RecipeMainActivity extends AppCompatActivity implements RecipeMainV
     }
 
     @OnClick(R.id.ibFavorite)
+    @Override
     public void onKeep(){
         if(currentRecipe != null){
             recipeMainPresenter.saveRecipe(currentRecipe);
         }
     }
+
+
     @OnClick(R.id.ibDelete)
+    @Override
     public void onDelete(){
         if(currentRecipe != null){
             recipeMainPresenter.dismissRecipe();

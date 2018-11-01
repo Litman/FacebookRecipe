@@ -14,6 +14,7 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import butterknife.Bind;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         callbackManager = CallbackManager.Factory.create();
-        bLogin.setReadPermissions(Arrays.asList("public_profile"));
+        bLogin.setPublishPermissions(Arrays.asList("publish_actions"));
+        //bLogin.setReadPermissions(Arrays.asList("public_profile"));
 
         bLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override

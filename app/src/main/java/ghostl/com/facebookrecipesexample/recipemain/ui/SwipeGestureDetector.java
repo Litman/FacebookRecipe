@@ -29,7 +29,7 @@ public class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListene
                 if(diffX > 0){
                     listener.onKeep();
                 }else{
-                    listener.onDismiss();
+                    listener.onDelete();
                 }
             }
 
