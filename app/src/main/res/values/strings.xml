@@ -11,4 +11,5 @@
 
     <string name="recipe.menu.action.list">Recetas guardadas</string>
     <string name="global.menu.action.logout">Cerrar Sesion</string>
+    <string name="recipe.menu.action.main">Choise Recipe</string>
 </resources>
