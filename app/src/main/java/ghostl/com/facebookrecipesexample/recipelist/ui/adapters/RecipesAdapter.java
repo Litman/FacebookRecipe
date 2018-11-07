@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.SendButton;
 import com.facebook.share.widget.ShareButton;
 
 import java.util.List;
@@ -44,8 +45,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         Recipe currenteRecipe = recipeList.get(position);
         imageLoader.load(holder.ivRecipe, currenteRecipe.getImageURL());
         holder.tvRecipeName.setText(currenteRecipe.getTitle());
-        holder.ibFavorite.setTag(currenteRecipe.getFavorite());
-        if(currenteRecipe.getFavorite()){
+        holder.ibFavorite.setTag(currenteRecipe.isFavorite());
+        if(currenteRecipe.isFavorite()){
             holder.ibFavorite.setImageResource(android.R.drawable.btn_star_big_on);
 
         }else{
@@ -82,7 +83,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         @Bind(R.id.bfShare)
         ShareButton bfShare;
         @Bind(R.id.bfSend)
-        ShareButton bfSend;
+        SendButton bfSend;
 
         private View view;
 

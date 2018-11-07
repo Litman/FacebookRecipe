@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         callbackManager = CallbackManager.Factory.create();
-        bLogin.setPublishPermissions(Arrays.asList("publish_actions"));
-        //bLogin.setReadPermissions(Arrays.asList("public_profile"));
+        //bLogin.setPublishPermissions(Arrays.asList("publish_actions"));
+        bLogin.setReadPermissions(Arrays.asList("public_profile"));
 
         bLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
