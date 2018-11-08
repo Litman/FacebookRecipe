@@ -2,11 +2,11 @@ package ghostl.com.facebookrecipesexample.recipelist;
 
 import ghostl.com.facebookrecipesexample.entities.Recipe;
 
-public class StoredRecipeInteractorImpl implements StoredRecipesInteractor{
+public class StoredRecipesInteractorImpl implements StoredRecipesInteractor{
 
     private RecipeListRepository recipeListRepository;
 
-    public StoredRecipeInteractorImpl(RecipeListRepository recipeListRepository) {
+    public StoredRecipesInteractorImpl(RecipeListRepository recipeListRepository) {
         this.recipeListRepository = recipeListRepository;
     }
 

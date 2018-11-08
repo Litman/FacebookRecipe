@@ -1,6 +1,7 @@
 package ghostl.com.facebookrecipesexample.recipelist;
 
 import com.raizlabs.android.dbflow.list.FlowCursorList;
+import com.raizlabs.android.dbflow.list.FlowQueryList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,9 +14,14 @@ public class RecipeListRepositoryImpl implements RecipeListRepository{
 
     private EventBus eventBus;
 
+    public RecipeListRepositoryImpl(EventBus eventBus) {
+        this.eventBus = eventBus;
+    }
+
     @Override
     public void getSaveRecipes() {
-        FlowCursorList<Recipe> storedRecipes = new FlowCursorList<Recipe>(false, Recipe.class);
+        ///FlowQueryList<Recipe> recipes = new FlowQueryList<>();
+        FlowCursorList<Recipe> storedRecipes = null; //new FlowCursorList<Recipe>(false, Recipe.class);
         post(RecipeListEvent.READ_EVENT, storedRecipes.getAll());
         storedRecipes.close();
     }

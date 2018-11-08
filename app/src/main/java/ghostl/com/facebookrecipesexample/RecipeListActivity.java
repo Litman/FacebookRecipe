@@ -22,6 +22,7 @@ import ghostl.com.facebookrecipesexample.entities.Recipe;
 import ghostl.com.facebookrecipesexample.libs.GlideImageLoader;
 import ghostl.com.facebookrecipesexample.libs.base.ImageLoader;
 import ghostl.com.facebookrecipesexample.recipelist.RecipeListPresenter;
+import ghostl.com.facebookrecipesexample.recipelist.di.RecipeListComponent;
 import ghostl.com.facebookrecipesexample.recipelist.events.RecipeListEvent;
 import ghostl.com.facebookrecipesexample.recipelist.ui.RecipeListView;
 import ghostl.com.facebookrecipesexample.recipelist.ui.adapters.OnItemClickListener;
@@ -35,8 +36,9 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListV
     @Bind(R.id.rvListRecipe)
     RecyclerView rvListRecipe;
 
-    RecipesAdapter adapter;
-    RecipeListPresenter listPresenter;
+    private RecipesAdapter adapter;
+    private RecipeListPresenter listPresenter;
+    private RecipeListComponent component;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,11 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListV
     }
 
     private void setupInjection() {
+        FacebookRecipesApp app = (FacebookRecipesApp) getApplication();
+        component = app.getRecipeListComponent(this, this, this);
+        listPresenter = getPresenter();
+        adapter = getAdapter();
+
         /*ImageLoader loader = new GlideImageLoader(Glide.with(this));
         Recipe recipe = new Recipe();
         recipe.setFavorite(false);
@@ -130,6 +137,15 @@ public class RecipeListActivity extends AppCompatActivity implements RecipeListV
         };*/
 
 
+    }
+
+    private RecipesAdapter getAdapter() {
+        return component.getAdapter();
+    }
+
+    private RecipeListPresenter getPresenter() {
+
+        return component.getPresenter();
     }
 
     private void setupRecyclerView() {

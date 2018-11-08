@@ -10,6 +10,11 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import dagger.Module;
 import ghostl.com.facebookrecipesexample.libs.di.LibsModule;
 import ghostl.com.facebookrecipesexample.login.MainActivity;
+import ghostl.com.facebookrecipesexample.recipelist.di.DaggerRecipeListComponent;
+import ghostl.com.facebookrecipesexample.recipelist.di.RecipeListComponent;
+import ghostl.com.facebookrecipesexample.recipelist.di.RecipeListModule;
+import ghostl.com.facebookrecipesexample.recipelist.ui.RecipeListView;
+import ghostl.com.facebookrecipesexample.recipelist.ui.adapters.OnItemClickListener;
 import ghostl.com.facebookrecipesexample.recipemain.di.DaggerRecipeMainComponent;
 import ghostl.com.facebookrecipesexample.recipemain.di.RecipeMainComponent;
 import ghostl.com.facebookrecipesexample.recipemain.di.RecipeMainModule;
@@ -58,4 +63,14 @@ public class FacebookRecipesApp extends Application {
                 .recipeMainModule(new RecipeMainModule(recipeMainView))
                 .build();
     }
+
+    public RecipeListComponent getRecipeListComponent(RecipeListActivity activity, RecipeListView recipeMainView, OnItemClickListener listener){
+        return DaggerRecipeListComponent
+                .builder()
+                .libsModule(new LibsModule(activity))
+                .recipeListModule(new RecipeListModule(recipeMainView, listener))
+                .build();
+
+    }
+
 }
